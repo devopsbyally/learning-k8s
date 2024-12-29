@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-k8s-app-deployment
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-k8s-app
+  template:
+    metadata:
+      labels:
+        app: python-k8s-app
+    spec:
+      containers:
+        - name: python-k8s-app
+          image: 010526277866.dkr.ecr.us-east-1.amazonaws.com/docker-repo-ally:latest
+
+          ports:
+            - containerPort: 3500
